@@ -56,13 +56,18 @@ To keep this program running, refer to [Supervisor](SUPERVISOR.md) section.
 
 ## Nginx Example
 
-This is an example for a typical Wordpress installation.
+We should only allow images to send to WebP Server Go, other extensions should just send the original file.
+
 ```
-location ^~ /wp-content/uploads/ {
-	proxy_set_header Host $http_host;
+location ~* \.(?:jpg|jpeg|gif|png)$ {
     proxy_pass http://127.0.0.1:3333;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_hide_header X-Powered-By;
+    proxy_set_header HOST $http_host;
+    add_header Cache-Control 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
 }
 ```
+
 If you use Caddy, you may refer to [优雅的让 Halo 支持 webp 图片输出](https://halo.run/archives/halo-and-webp).
 
 If there is a CDN in front of your website, please refer to [Use with CDN](CDN.md)
