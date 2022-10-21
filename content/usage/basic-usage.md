@@ -6,6 +6,16 @@
 ## Download or build the binary
 Download the `webp-server-go` from [release](https://github.com/webp-sh/webp_server_go/releases) page.
 
+## Install libaom
+
+`libaom` is for AVIF support, you can install it by `apt install libaom-dev` on Ubuntu, `yum install libaom-devel` on CentOS.
+
+Without this library, you may encounter error like this: `libaom.so.3: cannot open shared object file: No such file or directory`
+
+If you are using Intel Mac, you can install it by `brew install aom`
+
+If you are using Apple Silicon, you need to `brew install aom && export CPATH=/opt/homebrew/opt/aom/include/;LIBRARY_PATH=/opt/homebrew/opt/aom/lib/`, more references can be found at [在M1 Mac下开发WebP Server Go | 土豆不好吃](https://dmesg.app/m1-aom.html).
+
 ## Dump config file
 
 ```
