@@ -1,5 +1,5 @@
 ---
 title: Usage
-bookCollapseSection: true
+bookCollapseSection: false
 weight: 5
 ---
