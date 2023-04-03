@@ -23,3 +23,4 @@ weight: 18
 * [使用Docker安装WebP Server](https://bxbdba.com/archives/%E4%BD%BF%E7%94%A8docker%E5%AE%89%E8%A3%85webpserver)
 * [切换网站图片格式到webp](https://www.chonguang.cn/archives/qie-huan-wang-zhan-tu-pian-ge-shi-dao-webp)
 * [js将图片转换为base64_为网站添加图片 WebP 自动转换功能](https://blog.csdn.net/weixin_39835991/article/details/110743293)
+* [【WebP Server】灵活实现站点图片平滑过渡WebP](https://luotianyi.vc/6907.html)
