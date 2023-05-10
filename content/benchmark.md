@@ -6,6 +6,8 @@ weight: 12
 
 # Benchmark on convert
 
+Benchmarks are done on version before 0.6.0, as for versions after 0.6.0, our internal benchmark shows about 5 times faster.
+
 ## 8 core
 
 | file_size_range | file_num | src_size | dist_size |  total  |   user   | system | cpu  | core |

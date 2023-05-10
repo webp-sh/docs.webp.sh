@@ -9,5 +9,4 @@ ln -s /var/www/li/pic /var/www/hexo/public/pic
 And make necessary changes in each of your nginx's config:
 ```
 proxy_pass http://127.0.0.1:3333/pic1;
-
 ```

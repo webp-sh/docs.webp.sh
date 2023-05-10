@@ -1,9 +1,16 @@
 # Docker
 
-We've build docker images on [hub.docker.com](https://hub.docker.com/r/webpsh/webp-server-go). If you want to run `webp-server` insider docker container, you can run the command below,
+We've build docker images on [hub.docker.com](https://hub.docker.com/r/webpsh/webp-server-go) and [ghcr.io](https://github.com/webp-sh/webp_server_go/pkgs/container/webp_server_go). If you want to run `webp-server` insider docker container, you can run the command below:
+
+DockerHub
 ```shell
 docker run -d -p 3333:3333 -v /path/to/pics:/opt/pics --name webp-server webpsh/webp-server-go
 ```
+ghcr.io
+```shell
+docker run -d -p 3333:3333 -v /path/to/pics:/opt/pics --name ghcr.io/webp-sh/webp_server_go
+```
+
 The path `path/to/pics` is your images serving in local. The path `/opt/pics` is currently unable modify because it's defined in the `config.json` while building the docker image.
 
 The cache folder `EXHAUST_PATH` 's default is defined in `/opt/exhaust` , you can also mount the local directory for the cache folder by using `-v /path/to/exhaust:/opt/exhaust` option.
@@ -16,6 +23,7 @@ version: '3'
 services:
   webp:
     image: webpsh/webp-server-go
+    # image: ghcr.io/webp-sh/webp_server_go
     restart: always
     volumes:
       - ./path/to/pics:/opt/pics
@@ -41,6 +49,7 @@ version: '3'
 services:
   webp:
     image: webpsh/webp-server-go
+    # image: ghcr.io/webp-sh/webp_server_go
     restart: always
     volumes:
       - ./path/to/pics:/opt/pics
