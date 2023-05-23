@@ -25,6 +25,8 @@ services:
     image: webpsh/webp-server-go
     # image: ghcr.io/webp-sh/webp_server_go
     restart: always
+    environment:
+      - MALLOC_ARENA_MAX=1
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
@@ -54,6 +56,8 @@ services:
     image: webpsh/webp-server-go
     # image: ghcr.io/webp-sh/webp_server_go
     restart: always
+    environment:
+      - MALLOC_ARENA_MAX=1
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
