@@ -1,6 +1,6 @@
 # Docker
 
-We've build docker images on [hub.docker.com](https://hub.docker.com/r/webpsh/webp-server-go) and [ghcr.io](https://github.com/webp-sh/webp_server_go/pkgs/container/webp_server_go). If you want to run `webp-server` insider docker container, you can run the command below:
+We've build docker images on [hub.docker.com](https://hub.docker.com/r/webpsh/webp-server-go) and [ghcr.io](https://github.com/webp-sh/webp_server_go/pkgs/container/webp_server_go). If you want to run `webp-server` insider docker container without using `docker-compose.yml` and without limiting the resources it will use, you can run the command below:
 
 DockerHub
 ```shell
@@ -33,10 +33,13 @@ services:
     deploy:
       resources:
         limits:
-          memory: 200M
+          memory: 400M
+    memswap_limit: 400M
 ```
 
-Use with `docker-compose --compatibility up -d`.
+`memory` and `memswap_limit` will limit the RAM used by container will not exceed 400M and will use no swap, more info can be seen on https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details and https://github.com/webp-sh/webp_server_go/issues/198.
+
+Use with `docker-compose --compatibility up -d` to start the service.
 
 
 ## Custom config
@@ -60,5 +63,6 @@ services:
     deploy:
       resources:
         limits:
-          memory: 200M
+          memory: 400M
+    memswap_limit: 400M
 ```
