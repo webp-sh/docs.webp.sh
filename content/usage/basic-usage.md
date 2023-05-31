@@ -1,7 +1,9 @@
 # Basic Usage
 
-> Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](./DOCKER.html).
-> Related discussion: https://github.com/webp-sh/webp_server_go/issues/75
+{{< hint "info" >}}
+Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](./DOCKER.html).
+Related discussion: https://github.com/webp-sh/webp_server_go/issues/75
+{{< /hint >}}
 
 ## Download or build the binary
 Download the `webp-server-go` from [release](https://github.com/webp-sh/webp_server_go/releases) page.
@@ -10,23 +12,25 @@ Download the `webp-server-go` from [release](https://github.com/webp-sh/webp_ser
 
 ### If you are using version after 0.6.0
 
-> Install `libvips` on your machine, more info [here](https://github.com/davidbyttow/govips)
->
-> * Ubuntu `apt install libvips-dev`
-> * macOS `brew install vips pkg-config`
+Install `libvips` on your machine, more info [here](https://github.com/davidbyttow/govips)
+
+{{< tabs "after" >}}
+{{< tab "macOS" >}} Run `brew install vips pkg-config` {{< /tab >}}
+{{< tab "Ubuntu" >}} Run `apt install libvips-dev` {{< /tab >}}
+{{< /tabs >}}
 
 ### If you are using version before 0.6.0
 
-> If you'd like to run binary directly on your machine, you need to install `libaom`:
->
-> `libaom` is for AVIF support, you can install it by `apt install libaom-dev` on Ubuntu, `yum install libaom-devel` on CentOS.
->
-> Without this library, you may encounter error like this: `libaom.so.3: cannot open shared object file: No such file or directory`
->
-> If you are using Intel Mac, you can install it by `brew install aom`
->
-> If you are using Apple Silicon, you need to `brew install aom && export CPATH=/opt/homebrew/opt/aom/include/;LIBRARY_PATH=/opt/homebrew/opt/aom/lib/`, more references can be found at [在M1 Mac下开发WebP Server Go | 土豆不好吃](https://dmesg.app/m1-aom.html).
->
+If you'd like to run binary directly on your machine, you need to install `libaom`:
+
+Without this library, you may encounter error like this: `libaom.so.3: cannot open shared object file: No such file or directory`
+
+{{< tabs "before" >}}
+{{< tab "Apple Silicon" >}} `brew install aom && export CPATH=/opt/homebrew/opt/aom/include/;LIBRARY_PATH=/opt/homebrew/opt/aom/lib/`, more references can be found at [在M1 Mac下开发WebP Server Go | 土豆不好吃](https://dmesg.app/m1-aom.html). {{< /tab >}}
+{{< tab "Ubuntu" >}} Run `apt install libaom-dev` {{< /tab >}}
+{{< tab "CentOS" >}} Run `yum install libaom-devel` {{< /tab >}}
+{{< /tabs >}}
+
 > If you don't like to hassle around with your system, so do us, why not have a try using Docker? >> [Docker | WebP Server Documentation](https://docs.webp.sh/usage/docker/)
 
 ## Dump config file

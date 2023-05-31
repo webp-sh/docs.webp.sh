@@ -27,6 +27,8 @@ services:
     restart: always
     environment:
       - MALLOC_ARENA_MAX=1
+      # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+      # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
@@ -39,7 +41,14 @@ services:
     memswap_limit: 400M
 ```
 
-`memory` and `memswap_limit` will limit the RAM used by container will not exceed 400M and will use no swap, more info can be seen on https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details and https://github.com/webp-sh/webp_server_go/issues/198.
+{{< hint "info" >}}
+`memory` and `memswap_limit` will limit the RAM used by container will not exceed 400M and will use no swap, more info can be seen on https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details.
+
+Using `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2` will use `jemalloc` for malloc, can reduce RAM usage, related discussion: https://github.com/webp-sh/webp_server_go/issues/198
+
+Using `- LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6` will use `tcmalloc` for malloc.
+{{< /hint >}}
+
 
 Use with `docker-compose --compatibility up -d` to start the service.
 
@@ -58,6 +67,8 @@ services:
     restart: always
     environment:
       - MALLOC_ARENA_MAX=1
+      # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
+      # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
