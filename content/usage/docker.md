@@ -17,6 +17,9 @@ The cache folder `EXHAUST_PATH` 's default is defined in `/opt/exhaust` , you ca
 
 `docker-compose.yml` example file:
 
+{{< tabs "dockercompose" >}}
+{{< tab "AMD64" >}}
+
 ```yml
 version: '3'
 
@@ -40,6 +43,38 @@ services:
           memory: 400M
     memswap_limit: 400M
 ```
+
+{{< /tab >}}
+{{< tab "ARM64" >}} 
+
+```yml
+version: '3'
+
+services:
+  webp:
+    image: webpsh/webp-server-go
+    # image: ghcr.io/webp-sh/webp_server_go
+    restart: always
+    environment:
+      - MALLOC_ARENA_MAX=1
+      # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so.2
+      # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libtcmalloc_minimal.so.4.5.6
+    volumes:
+      - ./path/to/pics:/opt/pics
+      - ./path/to/exhaust:/opt/exhaust
+    ports:
+      -  127.0.0.1:3333:3333
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+    memswap_limit: 400M
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+
 
 {{< hint "info" >}}
 `memory` and `memswap_limit` will limit the RAM used by container will not exceed 400M and will use no swap, more info can be seen on https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details.
