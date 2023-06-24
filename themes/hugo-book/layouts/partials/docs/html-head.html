@@ -32,7 +32,9 @@
   <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
-{{- template "_internal/google_analytics.html" . -}}
+<!-- {{- template "_internal/google_analytics.html" . -}} -->
+
+<script defer data-domain="docs.webp.sh" src="https://possible.knat.network/js/script.js"></script>
 
 <!-- RSS -->
 {{- with .OutputFormats.Get "rss" -}}
