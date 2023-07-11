@@ -24,7 +24,29 @@ both are in px.
 
 {{< /columns >}}
 
+If you set both `width` and `height`, your image will be cropped using attention crop to maintain your width-height ratio, like this:
 
+{{< columns >}}
+
+<img src="/images/origin.png"/>
+
+`http://some-host.tld/path/to/origin.png`
+
+<--->
+<img src="/images/attention_800.png"/>
+
+`http://some-host.tld/path/to/origin.png?width=400&height=800`
+
+<--->
+<img src="/images/attention_400.png"/>
+
+`http://some-host.tld/path/to/origin.png?width=400&height=400`
+
+{{< /columns >}}
+
+> attention crop: look for features likely to draw human attention
+
+More examples can be found on our blog post: [How does different VipsInteresting values in libvips determine the cropping position of an image?](https://blog.webp.se/vips-crop-en/).
 ## More details
 
 ### Non Remote Backend
