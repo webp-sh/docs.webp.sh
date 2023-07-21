@@ -9,7 +9,7 @@ type: docs
 
 This is a Server based on Golang, which allows you to serve WebP images on the fly. 
 It will convert `jpg,jpeg,png` files by default, this can be customized by editing the `config.json`.
-* currently supported image format: JPEG, PNG, BMP, GIF(static image for now)
+* currently supported image format: JPEG, PNG, BMP, GIF, SVG
 
 > e.g When you visit `https://your.website/pics/tsuki.jpg`，it will serve as `image/webp` format without changing the URL.
 >

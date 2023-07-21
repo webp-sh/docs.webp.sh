@@ -46,11 +46,12 @@ The default `config.json` may look like this.
   "PORT": "3333",
   "QUALITY": "80",
   "IMG_PATH": "/path/to/pics",
-  "EXHAUST_PATH": "/path/to/exhaust",
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp"],
+  "EXHAUST_PATH": "./exhaust",
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false
 }
+
 ```
 
 > `ENABLE_AVIF` means AVIF support, it's disabled by default as converting images to AVIF is CPU consuming.
