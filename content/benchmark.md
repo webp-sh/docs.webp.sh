@@ -29,27 +29,29 @@ For more info on benchmark framework, or you'd like to do a benchmark yourself, 
 
 ![](/images/benchmark/webp_bench.svg)
 
+![](/images/benchmark/webp_bench_performance.svg)
 > For time consumed(shorter is better)
-> 
+
+![](/images/benchmark/webp_bench_ram.svg)
 > For RAM usage(smaller is better)
 
 
-| Version | RAM Usage | Time (seconds) |
-|---------|---------------|---------------|
-| 0.8.0   | 709           | 49            |
-| 0.8.1   | 522           | 49            |
-| 0.8.2   | 538           | 48            |
-| 0.8.3   | 553           | 48            |
-| 0.8.4   | 541           | 49            |
-| 0.9.0   | 535           | 73            |
-| 0.9.1   | 758           | 156           |
-| 0.9.2   | 1089          | 159           |
-| 0.9.3   | 1051          | 158           |
-| 0.9.4   | 806           | 159           |
-| 0.9.5   | 595           | 50            |
-| 0.9.6   | 538           | 50            |
-| 0.9.7   | 628           | 80            |
-| 0.9.8   | 605           | 80            |
+| Version | RAM Usage(jemalloc) | Time (jemalloc) | RAM Usage(glibc) | Time (glibc) | RAM Usage(tcmalloc) | Time (tcmalloc) |
+| ------- | ------------------- | --------------- | ---------------- | ------------ | ------------------- | --------------- |
+| 0.8.0   | 709                 | 49              | 714              | 51           | 671                 | 50              |
+| 0.8.1   | 522                 | 49              | 550              | 50           | 530                 | 51              |
+| 0.8.2   | 538                 | 48              | 539              | 53           | 556                 | 51              |
+| 0.8.3   | 553                 | 48              | 580              | 54           | 569                 | 49              |
+| 0.8.4   | 541                 | 49              | 576              | 53           | 573                 | 51              |
+| 0.9.0   | 535                 | 73              | 523              | 79           | 568                 | 82              |
+| 0.9.1   | 758                 | 156             | 1138             | 168          | 1101                | 171             |
+| 0.9.2   | 1089                | 159             | 1113             | 172          | 789                 | 169             |
+| 0.9.3   | 1051                | 158             | 1115             | 161          | 1016                | 170             |
+| 0.9.4   | 806                 | 159             | 827              | 165          | 1043                | 172             |
+| 0.9.5   | 595                 | 50              | 543              | 50           | 591                 | 52              |
+| 0.9.6   | 538                 | 50              | 541              | 49           | 565                 | 51              |
+| 0.9.7   | 628                 | 80              | 613              | 85           | 628                 | 82              |
+| 0.9.8   | 605                 | 80              | 656              | 80           | 630                 | 82              |
 
 * * *
 
@@ -59,50 +61,25 @@ For more info on benchmark framework, or you'd like to do a benchmark yourself, 
 X axis is time consumed(shorter is better), Y axis is RAM usage(smaller is better).
 
 
-### 0.9.8
-![](/images/benchmark/0.9.8.png)
-
-### 0.9.7
-![](/images/benchmark/0.9.7.png)
-
-### 0.9.6
-![](/images/benchmark/0.9.6.png)
-
-### 0.9.5
-![](/images/benchmark/0.9.5.png)
-
-### 0.9.4
-![](/images/benchmark/0.9.4.png)
-
-### 0.9.3
-![](/images/benchmark/0.9.3.png)
-
-### 0.9.2
-![](/images/benchmark/0.9.2.png)
-
-### 0.9.1
-![](/images/benchmark/0.9.1.png)
-
-### 0.9.0
-![](/images/benchmark/0.9.0.png)
-
-### 0.8.4
-![](/images/benchmark/0.8.4.png)
-
-### 0.8.3
-![](/images/benchmark/0.8.3.png)
-
-### 0.8.2
-![](/images/benchmark/0.8.2.png)
-
-### 0.8.1
-![](/images/benchmark/0.8.1.png)
-
-### 0.8.0
-![](/images/benchmark/0.8.0.png)
+| Version | glibc                                  | jemalloc                         | tcmalloc                                  |
+| ------- | -------------------------------------- | -------------------------------- | ----------------------------------------- |
+| 0.8.0   | ![](/images/benchmark/glibc_0.8.0.png) | ![](/images/benchmark/0.8.0.png) | ![](/images/benchmark/tcmalloc_0.8.0.png) |
+| 0.8.1   | ![](/images/benchmark/glibc_0.8.1.png) | ![](/images/benchmark/0.8.1.png) | ![](/images/benchmark/tcmalloc_0.8.1.png) |
+| 0.8.2   | ![](/images/benchmark/glibc_0.8.2.png) | ![](/images/benchmark/0.8.2.png) | ![](/images/benchmark/tcmalloc_0.8.2.png) |
+| 0.8.3   | ![](/images/benchmark/glibc_0.8.3.png) | ![](/images/benchmark/0.8.3.png) | ![](/images/benchmark/tcmalloc_0.8.3.png) |
+| 0.8.4   | ![](/images/benchmark/glibc_0.8.4.png) | ![](/images/benchmark/0.8.4.png) | ![](/images/benchmark/tcmalloc_0.8.4.png) |
+| 0.9.0   | ![](/images/benchmark/glibc_0.9.0.png) | ![](/images/benchmark/0.9.0.png) | ![](/images/benchmark/tcmalloc_0.9.0.png) |
+| 0.9.1   | ![](/images/benchmark/glibc_0.9.1.png) | ![](/images/benchmark/0.9.1.png) | ![](/images/benchmark/tcmalloc_0.9.1.png) |
+| 0.9.2   | ![](/images/benchmark/glibc_0.9.2.png) | ![](/images/benchmark/0.9.2.png) | ![](/images/benchmark/tcmalloc_0.9.2.png) |
+| 0.9.3   | ![](/images/benchmark/glibc_0.9.3.png) | ![](/images/benchmark/0.9.3.png) | ![](/images/benchmark/tcmalloc_0.9.3.png) |
+| 0.9.4   | ![](/images/benchmark/glibc_0.9.4.png) | ![](/images/benchmark/0.9.4.png) | ![](/images/benchmark/tcmalloc_0.9.4.png) |
+| 0.9.5   | ![](/images/benchmark/glibc_0.9.5.png) | ![](/images/benchmark/0.9.5.png) | ![](/images/benchmark/tcmalloc_0.9.5.png) |
+| 0.9.6   | ![](/images/benchmark/glibc_0.9.6.png) | ![](/images/benchmark/0.9.6.png) | ![](/images/benchmark/tcmalloc_0.9.6.png) |
+| 0.9.7   | ![](/images/benchmark/glibc_0.9.7.png) | ![](/images/benchmark/0.9.7.png) | ![](/images/benchmark/tcmalloc_0.9.7.png) |
+| 0.9.8   | ![](/images/benchmark/glibc_0.9.8.png) | ![](/images/benchmark/0.9.8.png) | ![](/images/benchmark/tcmalloc_0.9.8.png) |
 
 
-# Old Benchmark on convert
+# Benchmark on convert size(compression rate)
 
 Benchmarks are done on version before 0.6.0, as for versions after 0.6.0, our internal benchmark shows about 5 times faster.
 
