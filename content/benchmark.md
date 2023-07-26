@@ -22,21 +22,6 @@ Benchmarks are done with `AMD Ryzen 7 PRO 5850U` with a customized image set: to
 2.6G	total
 ```
 
-`config.json` used for testing is as follows:
-
-```json
-{
-    "HOST": "127.0.0.1",
-    "PORT": "3333",
-    "QUALITY": "80",
-    "IMG_PATH": "./pics",
-    "EXHAUST_PATH": "./exhaust",
-    "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif"],
-    "ENABLE_AVIF": false,
-    "ENABLE_EXTRA_PARAMS": false
-}
-```
-
 For more info on benchmark framework, or you'd like to do a benchmark yourself, visit https://github.com/webp-sh/webp_bench.
 
 
@@ -68,9 +53,11 @@ For more info on benchmark framework, or you'd like to do a benchmark yourself, 
 
 * * *
 
+
+## Detailed test results on each version
+
 X axis is time consumed(shorter is better), Y axis is RAM usage(smaller is better).
 
-## Detailed test results
 
 ### 0.9.8
 ![](/images/benchmark/0.9.8.png)

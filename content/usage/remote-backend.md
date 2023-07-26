@@ -1,6 +1,4 @@
-# Remote Backend
-
-> WebP Proxy Go unleashed.
+# Remote Backend(Proxy Mode)
 
 ## Usage
 
@@ -13,7 +11,7 @@ If you'd like to run WebP Server Go as a proxy for remote backend services, you 
   "QUALITY": "80",
   "IMG_PATH": "https://test.webp.sh",
   "EXHAUST_PATH": "",
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif"]
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg"]
 }
 ```
 

@@ -1,4 +1,11 @@
-# Docker
+---
+title: Use with Docker
+type: docs
+bookToc: false
+weight: 20
+---
+
+# Usage with Docker(recommended)
 
 We've build docker images on [hub.docker.com](https://hub.docker.com/r/webpsh/webp-server-go) and [ghcr.io](https://github.com/webp-sh/webp_server_go/pkgs/container/webp_server_go). If you want to run `webp-server` insider docker container without using `docker-compose.yml` and without limiting the resources it will use, you can run the command below:
 
@@ -84,9 +91,24 @@ Using `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2` will use `jemalloc
 Using `- LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6` will use `tcmalloc` for malloc.
 {{< /hint >}}
 
+Suppose your website and image has the following pattern.
 
-Use with `docker-compose --compatibility up -d` to start the service.
+| Image Path                            | Website Path                         |
+| ------------------------------------- | ------------------------------------ |
+| `/var/www/img.webp.sh/path/tsuki.jpg` | `https://img.webp.sh/path/tsuki.jpg` |
 
+Then
+
+* `./path/to/pics` should be changed to `/var/www/img.webp.sh`
+* `./exhaust` is cache folder for output images, by default it will be in `exhaust` directory alongside with `docker-compose.yml` file, if you'd like to keep cached images in another folder as , you can change  `./exhaust` to `/some/other/path/to/exhaust`
+
+Start the container using:
+
+```
+docker-compose up -d
+```
+
+Now the server should be running on `127.0.0.1:3333`, visiting `http://127.0.0.1:3333/path/tsuki.jpg` will see the optimized version of `/var/www/img.webp.sh/path/tsuki.jpg`, you can now add reverse proxy to make it public, for example, let Nginx to `proxy_pass http://127.0.0.1:3333/;`, and your WebP Server is on-the-fly!
 
 ## Custom config
 

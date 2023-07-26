@@ -1,4 +1,11 @@
-# Basic Usage
+---
+title: Use with Binary(Advanced)
+type: docs
+bookToc: false
+weight: 25
+---
+
+# Usage with Binary
 
 {{< hint "info" >}}
 Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](./DOCKER.html).
