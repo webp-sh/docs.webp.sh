@@ -58,13 +58,13 @@ The default `config.json` may look like this.
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false
 }
-
 ```
 
 > `ENABLE_AVIF` means AVIF support, it's disabled by default as converting images to AVIF is CPU consuming.
 >
 > `ENABLE_EXTRA_PARAMS` means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](./extra-params.md) page.
 
+If you'd like to serve multiple directories, you can refer to [Multipath](multipath.md) section for more info.
 
 ### Config Example
 
