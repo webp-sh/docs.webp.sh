@@ -12,6 +12,7 @@ weight: 17
 | --------------- | ---------- | ------------------------------------------- |
 | BennyThink      | BennyThink | WebP Server Go, WebP Server Python          |
 | BlueCocoa       | BlueCocoa  | WebP Server Rust                            |
+| BugFest         | bugfest    | WebP Server Go                              |
 | Keshane         | KnifeC     | WebP Server Java, Artwork Digitalize        |
 | muzi            | muzi502    | WebP Server Go                              |
 | Nova Kwok       | n0vad3v    | WebP Server Go, WebP Server Node ,`webp.sh` |
