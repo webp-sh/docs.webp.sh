@@ -15,7 +15,7 @@ docker run -d -p 3333:3333 -v /path/to/pics:/opt/pics --name webp-server webpsh/
 ```
 ghcr.io
 ```shell
-docker run -d -p 3333:3333 -v /path/to/pics:/opt/pics --name ghcr.io/webp-sh/webp_server_go
+docker run -d -p 3333:3333 -v /path/to/pics:/opt/pics --name webp-server ghcr.io/webp-sh/webp_server_go
 ```
 
 The path `path/to/pics` is your images serving in local. The path `/opt/pics` is currently unable modify because it's defined in the `config.json` while building the docker image.
