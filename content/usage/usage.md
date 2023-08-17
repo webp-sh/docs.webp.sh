@@ -42,6 +42,7 @@ services:
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
+      - ./path/to/metadata:/opt/metadata
     ports:
       -  127.0.0.1:3333:3333
     deploy:
@@ -69,6 +70,7 @@ services:
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
+      - ./path/to/metadata:/opt/metadata
     ports:
       -  127.0.0.1:3333:3333
     deploy:
@@ -129,6 +131,7 @@ services:
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
+      - ./path/to/metadata:/opt/metadata
       - ./config.json:/etc/config.json
     ports:
       -  127.0.0.1:3333:3333
