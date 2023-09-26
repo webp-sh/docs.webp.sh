@@ -52,9 +52,10 @@ The default `config.json` may look like this.
   "HOST": "127.0.0.1",
   "PORT": "3333",
   "QUALITY": "80",
-  "IMG_PATH": "/path/to/pics",
+  "IMG_PATH": "./pics",
   "EXHAUST_PATH": "./exhaust",
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg"],
+  "IMG_MAP": {},
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","svg"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false
 }
@@ -63,6 +64,8 @@ The default `config.json` may look like this.
 > `ENABLE_AVIF` means AVIF support, it's disabled by default as converting images to AVIF is CPU consuming.
 >
 > `ENABLE_EXTRA_PARAMS` means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](./extra-params.md) page.
+>
+> Remember to change `"HOST": "127.0.0.1",` to `"HOST": "0.0.0.0",` if you'd like to use config inside Docker.
 
 If you'd like to serve multiple directories, you can refer to [Multipath](multipath.md) section for more info.
 

@@ -36,6 +36,8 @@ Example:
 }
 ```
 
+> Remember to change `"HOST": "127.0.0.1",` to `"HOST": "0.0.0.0",` if you'd like to use config inside Docker.
+
 For example, you have some images under `./pics`, `./pics2` and `./pics3`, as below:
 
 * `./pics` contains `1.jpg`, `2.jpg`, `3.jpg`
