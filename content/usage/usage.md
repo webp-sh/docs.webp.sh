@@ -39,6 +39,9 @@ services:
       - MALLOC_ARENA_MAX=1
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
+      # - READ_BUFFER_SIZE=4096
+      # - CONCURRENCY=262144
+      # - DISABLE_KEEPALIVE=false
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
@@ -67,6 +70,9 @@ services:
       - MALLOC_ARENA_MAX=1
       # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libtcmalloc_minimal.so.4.5.6
+      # - READ_BUFFER_SIZE=4096
+      # - CONCURRENCY=262144
+      # - DISABLE_KEEPALIVE=false
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust
@@ -87,11 +93,29 @@ services:
 
 {{< hint "info" >}}
 `memory` and `memswap_limit` will limit the RAM used by container will not exceed 400M and will use no swap, more info can be seen on https://docs.docker.com/config/containers/resource_constraints/#--memory-swap-details.
+{{< /hint >}}
 
+{{< hint "info" >}}
 Using `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2` will use `jemalloc` for malloc, can reduce RAM usage, related discussion: https://github.com/webp-sh/webp_server_go/issues/198
 
 Using `- LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6` will use `tcmalloc` for malloc.
 {{< /hint >}}
+
+{{< hint "info" >}}
+After version 0.9.12, we support some environment variables to control the behavior of WebP Server Go.
+
+* `READ_BUFFER_SIZE`
+  * per-connection buffer size for requests' reading. This also limits the maximum header size. Increase this buffer if your clients send multi-KB RequestURIs and/or multi-KB headers (for example, BIG cookies).
+  * Especially useful when you have large cookies, related issue: https://github.com/webp-sh/webp_server_go/issues/280
+  * Default: 4096
+* `CONCURRENCY`
+  * Maximum number of concurrent connections
+  * Default: 262144
+* `DISABLE_KEEPALIVE`
+  * Disable keep-alive connections, the server will close incoming connections after sending the first response to the client
+  * Default: false
+{{< /hint >}}
+
 
 Suppose your website and image has the following pattern.
 
@@ -128,6 +152,9 @@ services:
       - MALLOC_ARENA_MAX=1
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
+      # - READ_BUFFER_SIZE=4096
+      # - CONCURRENCY=262144
+      # - DISABLE_KEEPALIVE=false
     volumes:
       - ./path/to/pics:/opt/pics
       - ./path/to/exhaust:/opt/exhaust

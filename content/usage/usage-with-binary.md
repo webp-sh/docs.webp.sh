@@ -55,7 +55,7 @@ The default `config.json` may look like this.
   "IMG_PATH": "./pics",
   "EXHAUST_PATH": "./exhaust",
   "IMG_MAP": {},
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","svg"],
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false
 }
@@ -100,7 +100,7 @@ To keep this program running, refer to [Supervisor](SUPERVISOR.md) section.
 We should only allow images to send to WebP Server Go, other extensions should just send the original file.
 
 ```
-location ~* \.(?:jpg|jpeg|gif|png)$ {
+location ~* \.(?:jpg|jpeg|gif|png|svg|heic|bmp)$ {
     proxy_pass http://127.0.0.1:3333;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_hide_header X-Powered-By;
