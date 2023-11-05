@@ -5,7 +5,7 @@ bookToc: false
 weight: 25
 ---
 
-# Usage with Binary
+# Usage with Binary(Advanced)
 
 {{< hint "info" >}}
 Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](./DOCKER.html).
@@ -40,53 +40,9 @@ Without this library, you may encounter error like this: `libaom.so.3: cannot op
 
 > If you don't like to hassle around with your system, so do us, why not have a try using Docker? >> [Docker | WebP Server Documentation](https://docs.webp.sh/usage/docker/)
 
-## Dump config file
+## Create config file
 
-```
-./webp-server -dump-config > config.json
-```
-
-The default `config.json` may look like this.
-```json
-{
-  "HOST": "127.0.0.1",
-  "PORT": "3333",
-  "QUALITY": "80",
-  "IMG_PATH": "./pics",
-  "EXHAUST_PATH": "./exhaust",
-  "IMG_MAP": {},
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic"],
-  "ENABLE_AVIF": false,
-  "ENABLE_EXTRA_PARAMS": false
-}
-```
-
-> `ENABLE_AVIF` means AVIF support, it's disabled by default as converting images to AVIF is CPU consuming.
->
-> `ENABLE_EXTRA_PARAMS` means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](./extra-params.md) page.
->
-> Remember to change `"HOST": "127.0.0.1",` to `"HOST": "0.0.0.0",` if you'd like to use config inside Docker.
-
-If you'd like to serve multiple directories, you can refer to [Multipath](multipath.md) section for more info.
-
-### Config Example
-
-In the following example, the image path and website URL.
-
-| Image Path                            | Website Path                         |
-| ------------------------------------- | ------------------------------------ |
-| `/var/www/img.webp.sh/path/tsuki.jpg` | `https://img.webp.sh/path/tsuki.jpg` |
-
-The `config.json` should be like:
-
-| IMG_PATH               |
-| ---------------------- |
-| `/var/www/img.webp.sh` |
-
-`EXHAUST_PATH` is cache folder for output `webp` images, with `EXHAUST_PATH` set to `/var/cache/webp` 
-in the example above, your `webp` image will be saved at `/var/cache/webp/pics/tsuki.jpg.1582558990.webp`.
-
-If you'd like to use a remote backend(such as external Nginx served static site, Aliyun OSS or Tencent COS), please refer to [Remote Backend](REMOTE_BACKEND.md).
+Please refer to [Configuration](CONFIGURATION.md) page.
 
 ## Run
 

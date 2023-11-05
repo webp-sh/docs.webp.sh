@@ -30,7 +30,7 @@ Example:
     "/3": "./pics3",
     "http://www.example.com": "https://docs.webp.sh"
   },
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic"],
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic","nef"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false
 }

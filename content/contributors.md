@@ -14,6 +14,7 @@ weight: 17
 | BlueCocoa       | BlueCocoa     | WebP Server Rust                            |
 | BugFest         | bugfest       | WebP Server Go                              |
 | Keshane         | KnifeC        | WebP Server Java, Artwork Digitalize        |
+| Langel          | llanc         | WebP Server Go                              |
 | Mathieu Aubin   | mathieu-aubin | WebP Server Go                              |
 | muzi            | muzi502       | WebP Server Go                              |
 | Nova Kwok       | n0vad3v       | WebP Server Go, WebP Server Node ,`webp.sh` |
