@@ -42,9 +42,9 @@ services:
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
     volumes:
-      - ./path/to/pics:/opt/pics
-      - ./path/to/exhaust:/opt/exhaust
-      - ./path/to/metadata:/opt/metadata
+      - /path/to/pics:/opt/pics
+      - ./exhaust:/opt/exhaust
+      - ./metadata:/opt/metadata
     ports:
       -  127.0.0.1:3333:3333
 ```
@@ -65,9 +65,9 @@ services:
       # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libtcmalloc_minimal.so.4.5.6
     volumes:
-      - ./path/to/pics:/opt/pics
-      - ./path/to/exhaust:/opt/exhaust
-      - ./path/to/metadata:/opt/metadata
+      - /path/to/pics:/opt/pics
+      - ./exhaust:/opt/exhaust
+      - ./metadata:/opt/metadata
     ports:
       -  127.0.0.1:3333:3333
 ```
@@ -87,7 +87,7 @@ Start the container using:
 docker-compose up -d
 ```
 
-Now the server should be running on `127.0.0.1:3333`, visiting `http://127.0.0.1:3333/path/tsuki.jpg` will see the optimized version of `/var/www/img.webp.sh/path/tsuki.jpg`, you can now add reverse proxy to make it public, for example, let Nginx to `proxy_pass http://127.0.0.1:3333/;`, and your WebP Server is on-the-fly!
+Now the server should be running on `127.0.0.1:3333`, visiting `http://127.0.0.1:3333/some-images/tsuki.jpg` will see the optimized version of `/path/to/pics/some-images/tsuki.jpg`, you can now add reverse proxy to make it public, for example, let Nginx to `proxy_pass http://127.0.0.1:3333/;`, and your WebP Server is on-the-fly!
 
 ## Custom config
 
@@ -106,9 +106,9 @@ services:
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
       # - LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4.5.6
     volumes:
-      - ./path/to/pics:/opt/pics
-      - ./path/to/exhaust:/opt/exhaust
-      - ./path/to/metadata:/opt/metadata
+      - /path/to/pics:/opt/pics
+      - ./exhaust:/opt/exhaust
+      - ./metadata:/opt/metadata
       - ./config.json:/etc/config.json
     ports:
       -  127.0.0.1:3333:3333
