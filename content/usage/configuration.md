@@ -16,7 +16,7 @@ Priority: Environment variables > `config.json` file.
 
 ## Full configuration
 
-This is the full configuration with default values of WebP Server Go, you can copy it to `config.json` and modify it to your needs.
+This is the full configuration with default values of WebP Server Go(except the `IMG_MAP` part), you can copy it to `config.json` and modify it to your needs.
 
 You can use environment variables to override the configuration in `config.json`, the environment variables are added by using prefix `WEBP_` and uppercase the field name, for example, `HOST` will be `WEBP_HOST`, `IMG_PATH` will be `WEBP_IMG_PATH`.
 
@@ -24,7 +24,7 @@ You can use environment variables to override the configuration in `config.json`
 
 ```json
 {
-  "HOST": "127.0.0.1",
+  "HOST": "0.0.0.0",
   "PORT": "3333",
   "IMG_PATH": "./pics",
   "EXHAUST_PATH": "./exhaust",
@@ -33,7 +33,7 @@ You can use environment variables to override the configuration in `config.json`
     "/3": "./pics3",
     "http://www.example.com": "https://docs.webp.sh"
   },
-  "ALLOWED_TYPES": ["jpg", "png", "jpeg", "bmp", "gif", "svg", "heic", "nef"],
+  "ALLOWED_TYPES": ["jpg", "png", "jpeg", "bmp", "gif", "svg", "heic", "nef", "webp"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false,
   "READ_BUFFER_SIZE": 4096,
