@@ -16,7 +16,7 @@ Priority: Environment variables > `config.json` file.
 
 ## Full configuration
 
-This is the full configuration with default values of WebP Server Go(except the `IMG_MAP` part), you can copy it to `config.json` and modify it to your needs.
+This is the full configuration with default values of WebP Server Go(except the `IMG_MAP` part), you can copy it to `config.json` and modify it to your needs, or if you just want to change some of the values, you can use environment variables to override the specific values.
 
 You can use environment variables to override the configuration in `config.json`, the environment variables are added by using prefix `WEBP_` and uppercase the field name, for example, `HOST` will be `WEBP_HOST`, `IMG_PATH` will be `WEBP_IMG_PATH`.
 
@@ -28,17 +28,23 @@ You can use environment variables to override the configuration in `config.json`
   "PORT": "3333",
   "IMG_PATH": "./pics",
   "EXHAUST_PATH": "./exhaust",
-  "IMG_MAP": {
-    "/2": "./pics2",
-    "/3": "./pics3",
-    "http://www.example.com": "https://docs.webp.sh"
-  },
+  "IMG_MAP": {},
   "ALLOWED_TYPES": ["jpg", "png", "jpeg", "bmp", "gif", "svg", "heic", "nef", "webp"],
   "ENABLE_AVIF": false,
   "ENABLE_EXTRA_PARAMS": false,
   "READ_BUFFER_SIZE": 4096,
   "CONCURRENCY": 262144,
   "DISABLE_KEEPALIVE": false
+}
+```
+
+The `IMG_MAP` example as below:
+
+```
+"IMG_MAP": {
+  "/2": "./pics2",
+  "/3": "./pics3",
+  "http://www.example.com": "https://docs.webp.sh"
 }
 ```
 
@@ -53,18 +59,41 @@ Description of each field:
 | `IMG_MAP`             | /                          | dict   | Map of URI/Host to image, if this is present then `IMG_PATH` and `EXHAUST_PATH` will be ignored, see more on [MultiPath](http://localhost:1313/usage/multipath/) page                                                                              |
 | `ALLOWED_TYPES`       | `WEBP_ALLOWED_TYPES`       | list   | List of allowed image types                                                                                                                                                                                                                        |
 | `ENABLE_AVIF`         | `WEBP_ENABLE_AVIF`         | bool   | Enable AVIF support,it’s disabled by default as converting images to AVIF is CPU consuming.                                                                                                                                                        |
-| `ENABLE_EXTRA_PARAMS` | `WEBP_ENABLE_EXTRA_PARAMS` | bool   | Means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](http://localhost:1313/usage/extra-params/) page. |
+| `ENABLE_EXTRA_PARAMS` | `WEBP_ENABLE_EXTRA_PARAMS` | bool   | Means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](/usage/extra-params/) page. |
 | `READ_BUFFER_SIZE`    | `WEBP_READ_BUFFER_SIZE`    | string | per-connection buffer size for requests’ reading. This also limits the maximum header size. Increase this buffer if your clients send multi-KB RequestURIs and/or multi-KB headers (for example, BIG cookies).                                     |
 | `CONCURRENCY`         | `WEBP_CONCURRENCY`         | string | Maximum number of concurrent connections                                                                                                                                                                                                           |
 | `DISABLE_KEEPALIVE`   | `WEBP_DISABLE_KEEPALIVE`   | string | Disable keep-alive connections, the server will close incoming connections after sending the first response to the client                                                                                                                          |
 
-Suppose your website and image has the following pattern.
+
+## Configuration example
+
+Suppose your website and image has the following pattern:
 
 | Image Path                            | Website Path                         |
 | ------------------------------------- | ------------------------------------ |
 | `/var/www/img.webp.sh/path/tsuki.jpg` | `https://img.webp.sh/path/tsuki.jpg` |
 
-Then
+And you wish to enable [Extra Parameters](/usage/extra-params/), then
 
 - `./pics` should be changed to `/var/www/img.webp.sh`
 - `./exhaust` is cache folder for output images, by default it will be in `exhaust` directory alongside with `docker-compose.yml` file, if you'd like to keep cached images in another folder as , you can change `./exhaust` to `/some/other/path/to/exhaust`
+- `ENABLE_EXTRA_PARAMS` can be passed in by environment variable `WEBP_ENABLE_EXTRA_PARAMS=true`
+
+Your `docker-compose.yml` file can be written as follows:
+
+```yaml
+version: '3'
+
+services:
+  webp:
+    image: webpsh/webp-server-go
+    restart: always
+    environment:
+      - WEBP_ENABLE_EXTRA_PARAMS=true
+    volumes:
+      - /var/www/img.webp.sh:/opt/pics
+      - ./exhaust:/opt/exhaust
+      - ./metadata:/opt/metadata
+    ports:
+      -  127.0.0.1:3333:3333
+```

@@ -91,7 +91,7 @@ Now the server should be running on `127.0.0.1:3333`, visiting `http://127.0.0.1
 
 ## Custom config
 
-If you'd like to use a customized `config.json`, you can follow Please refer to [Configuration](CONFIGURATION.md) page to genereate one, and mount it into the container's `/etc/config.json`, example `docker-compose.yml` as follows:
+If you'd like to use a customized `config.json`, you can follow [Configuration](CONFIGURATION.md) page to genereate one, and mount it into the container's `/etc/config.json`, example `docker-compose.yml` as follows:
 
 ```yml
 version: '3'

@@ -6,7 +6,7 @@ weight: 14
 
 # Build WebP Server Go
 
-Install latest version of golang, enable go module, install dependencies described under [Basic Usage](/usage/basic-usage/) and clone the repo, then...
+Install latest version of golang, enable go module, install dependencies described under [Usage with Binary(Advanced)](/usage/usage-with-binary/) and clone the repo, then...
 
 ```sh
 make
