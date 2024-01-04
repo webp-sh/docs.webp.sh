@@ -23,6 +23,7 @@ Example:
 {
   "HOST": "127.0.0.1",
   "PORT": "3333",
+  "QUALITY": "80",
   "IMG_PATH": "./pics",
   "EXHAUST_PATH": "./exhaust",
   "IMG_MAP": {
