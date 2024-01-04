@@ -10,8 +10,8 @@ If you'd like to run WebP Server Go as a proxy for remote backend services, you 
   "PORT": "3333",
   "QUALITY": "80",
   "IMG_PATH": "https://test.webp.sh",
-  "EXHAUST_PATH": "",
-  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic"],
+  "EXHAUST_PATH": "./exhaust",
+  "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic"]
 }
 ```
 
