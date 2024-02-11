@@ -17,26 +17,14 @@ Download the `webp-server-go` from [release](https://github.com/webp-sh/webp_ser
 
 ## Install dependencies
 
-### If you are using version after 0.6.0
-
-Install `libvips` on your machine, more info [here](https://github.com/davidbyttow/govips)
+Install `libvips` on your machine, more info [here](https://github.com/davidbyttow/govips).
 
 {{< tabs "after" >}}
 {{< tab "macOS" >}} Run `brew install vips pkg-config` {{< /tab >}}
 {{< tab "Ubuntu" >}} Run `apt install libvips-dev` {{< /tab >}}
+{{< tab "Fedora" >}} Run `dnf install vips-devel` {{< /tab >}}
 {{< /tabs >}}
 
-### If you are using version before 0.6.0
-
-If you'd like to run binary directly on your machine, you need to install `libaom`:
-
-Without this library, you may encounter error like this: `libaom.so.3: cannot open shared object file: No such file or directory`
-
-{{< tabs "before" >}}
-{{< tab "Apple Silicon" >}} `brew install aom && export CPATH=/opt/homebrew/opt/aom/include/;LIBRARY_PATH=/opt/homebrew/opt/aom/lib/`, more references can be found at [在M1 Mac下开发WebP Server Go | 土豆不好吃](https://dmesg.app/m1-aom.html). {{< /tab >}}
-{{< tab "Ubuntu" >}} Run `apt install libaom-dev` {{< /tab >}}
-{{< tab "CentOS" >}} Run `yum install libaom-devel` {{< /tab >}}
-{{< /tabs >}}
 
 > If you don't like to hassle around with your system, so do us, why not have a try using Docker? >> [Docker | WebP Server Documentation](https://docs.webp.sh/usage/docker/)
 
@@ -56,7 +44,7 @@ To keep this program running, refer to [Supervisor](SUPERVISOR.md) section.
 We should only allow images to send to WebP Server Go, other extensions should just send the original file.
 
 ```
-location ~* \.(?:jpg|jpeg|gif|png|svg|heic|bmp)$ {
+location ~* \.(?:jpg|jpeg|gif|png|svg|heic|bmp|nef|webp)$ {
     proxy_pass http://127.0.0.1:3333;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_hide_header X-Powered-By;
