@@ -32,7 +32,8 @@ Example:
     "http://www.example.com": "https://docs.webp.sh"
   },
   "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic","nef"],
-  "ENABLE_AVIF": false,
+  "CONVERT_TYPES": ["webp"],
+  "STRIP_METADATA": true,
   "ENABLE_EXTRA_PARAMS": false
 }
 ```
