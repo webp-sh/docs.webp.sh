@@ -26,7 +26,7 @@ both are in px.
 
 {{< /columns >}}
 
-If you set both `width` and `height`, your image will be cropped using attention crop to maintain your width-height ratio, like this:
+If you set both `width` and `height`, your image will be cropped using attention crop by default maintain your width-height ratio, like this:
 
 {{< columns >}}
 
@@ -46,7 +46,9 @@ If you set both `width` and `height`, your image will be cropped using attention
 
 {{< /columns >}}
 
-> attention crop: look for features likely to draw human attention
+> attention crop: look for features likely to draw human attention.
+
+You can use `EXTRA_PARAMS_CROP_INTERESTING` config to change crop interesting, configuration example at [Configuration](/usage/configuration/) page.
 
 More examples can be found on our blog post: [How does different VipsInteresting values in libvips determine the cropping position of an image?](https://blog.webp.se/vips-crop-en/).
 

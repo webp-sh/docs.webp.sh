@@ -36,6 +36,7 @@ You can use environment variables to override the configuration in `config.json`
   "CONVERT_TYPES": ["webp"],
   "STRIP_METADATA": true,
   "ENABLE_EXTRA_PARAMS": false,
+  "EXTRA_PARAMS_CROP_INTERESTING": "InterestingAttention",
   "READ_BUFFER_SIZE": 4096,
   "CONCURRENCY": 262144,
   "DISABLE_KEEPALIVE": false,
@@ -67,10 +68,11 @@ Description of each field:
 | `CONVERT_TYPES`         | `WEBP_CONVERT_TYPES`         | string | The image types list that WebP Server will try to convert to, default is `["webp"]` which means it will only try to convert image to WebP, available options: `["webp","avif","jxl"]`. |
 | `STRIP_METADATA` | `WEBP_STRIP_METADATA` | bool | Whether to Strip EXIF metadata from images. |
 | `ENABLE_EXTRA_PARAMS` | `WEBP_ENABLE_EXTRA_PARAMS` | bool   | Means whether to enable Extra Parameters, basically it allows you to do some transform on images like `https://img.webp.sh/path/tsuki.jpg?width=20`, you can find more info on [Extra Parameters](/usage/extra-params/) page. |
+| `EXTRA_PARAMS_CROP_INTERESTING` | `WEBP_EXTRA_PARAMS_CROP_INTERESTING` | string | Defines how should WebP Server crop image when `ENABLE_EXTRA_PARAMS` is on and image requests contains both `width` and `height`, available options are: "InterestingNone", "InterestingEntropy", "InterestingCentre", "InterestingAttention", "InterestringLow", "InterestingHigh", "InterestingAll", you can find more info on [Extra Parameters](/usage/extra-params/) page. |
 | `READ_BUFFER_SIZE`    | `WEBP_READ_BUFFER_SIZE`    | number | per-connection buffer size for requests’ reading. This also limits the maximum header size. Increase this buffer if your clients send multi-KB RequestURIs and/or multi-KB headers (for example, BIG cookies).                |
 | `CONCURRENCY`         | `WEBP_CONCURRENCY`         | number | Maximum number of concurrent connections                                                                                                                                                                                      |
 | `DISABLE_KEEPALIVE`   | `WEBP_DISABLE_KEEPALIVE`   | string | Disable keep-alive connections, the server will close incoming connections after sending the first response to the client                                                                                                     |
-| `CACHE_TTL`   | `WEBP_CACHE_TTL`   | number | Cache TTL(minutes) for Remote Backends(Proxy Mode), we use `HEAD` request to get remote image info, so your backend needs to support `HEAD` request, after first successfuly `HEAD` request, it will be cached for `CACHE_TTL` minutes, during that period, we will not send `HEAD` request again and use local cache for rendering. Setting this value to 0 means cache forever.          |                                                                                         |
+| `CACHE_TTL`   | `WEBP_CACHE_TTL`   | number | Cache TTL(minutes) for Remote Backends(Proxy Mode), we use `HEAD` request to get remote image info, so your backend needs to support `HEAD` request, after first successfuly `HEAD` request, it will be cached for `CACHE_TTL` minutes, during that period, we will not send `HEAD` request again and use local cache for rendering. Setting this value to 0 means cache forever.          |
 
 ## Configuration example
 
