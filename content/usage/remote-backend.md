@@ -31,7 +31,7 @@ Please be aware that the `IMG_PATH` must:
 
 We use `Etag` header from backend to fetch and refresh/rebuild cache, so it's a need that your backend's response will contain a `Etag` header.
 
-We use `HEAD` request to get remote image info, so your backend needs to support `HEAD` request, after first successfuly `HEAD` request, it will be cached for `CACHE_TTL` minutes, during that period, we will not send `HEAD` request again and use local cache for rendering.
+We use `HEAD` request to get remote image info, so your backend needs to support `HEAD` request, after first successfully `HEAD` request, it will be cached for `CACHE_TTL` minutes, during that period, we will not send `HEAD` request again and use local cache for rendering.
 
 Supported(tested) backends:
 
