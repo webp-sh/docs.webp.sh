@@ -55,3 +55,21 @@ Then you can access them via:
 * `http://www.example.com/favicon.png`
 
 For the last example to work you need to pass the `Host` header as part of the request. If you use `curl` you can test it with the command `curl -H 'Host: www.example.com' http://localhost:3333/favicon.png`
+
+## Note on `IMG_MAP`
+
+If you have multiple paths sharing the same prefix, for example:
+
+* `/image`
+* `/image1`
+* `/im`
+
+Please be sure the longer prefix item is above the shorter one, for the example above, the `IMG_MAP` section should be defined as follows:
+
+```json
+"IMG_MAP": {
+  "/image1": "./some-path",
+  "/image": "./some-other-path",
+  "/im": "https://some-image.webp.sh"
+},
+```
