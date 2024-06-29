@@ -5,7 +5,10 @@ bookToc: false
 weight: 24
 ---
 
+
 # Configuration
+
+> This is the unified documentation, please use the latest version of WebP Server Go if possible as some configuration might not be available in previous versions.
 
 WebP Server Go can be configured by the following ways:
 
@@ -13,6 +16,16 @@ WebP Server Go can be configured by the following ways:
 - Environment variables
 
 Priority: Environment variables > `config.json` file.
+
+## Configuration changelog
+
+{{< hint "info" >}}
+* `MAX_CACHE_SIZE` is added at version 0.12.0
+* `EXTRA_PARAMS_CROP_INTERESTING` is added at version 0.11.2
+* `STRIP_METADATA`, `CONVERT_TYPES` is added at version 0.11.0, dropped `ENABLE_AVIF` entry.
+* `CACHE_TTL` is added at version 0.10.7
+* `READ_BUFFER_SIZE`, `CONCURRENCY` and `DISABLE_KEEPALIVE` is added at version 0.9.12
+{{< /hint >}}
 
 ## Full configuration
 
@@ -40,7 +53,8 @@ You can use environment variables to override the configuration in `config.json`
   "READ_BUFFER_SIZE": 4096,
   "CONCURRENCY": 262144,
   "DISABLE_KEEPALIVE": false,
-  "CACHE_TTL": 259200
+  "CACHE_TTL": 259200,
+  "MAX_CACHE_SIZE": 0,
 }
 ```
 
@@ -63,7 +77,7 @@ Description of each field:
 | `QUALITY`             | `WEBP_QUALITY`             | string | Quality of image, from 0 to 100, 100 means lossless conversion.                                                                                                                                                               |
 | `IMG_PATH`            | `WEBP_IMG_PATH`            | string | Path to the image directory(of original images), if you'd like to use a remote backend(such as external Nginx served static site, Aliyun OSS or Tencent COS), please refer to [Remote Backend](REMOTE_BACKEND.md).            |
 | `EXHAUST_PATH`        | `WEBP_EXHAUST_PATH`        | string | Path to the cache directory(of WebP images), for example, with `EXHAUST_PATH` set to `/var/cache/webp`, your `webp` image will be saved at `/var/cache/webp/pics/tsuki.jpg.1582558990.webp`.                                  |
-| `IMG_MAP`             | /                          | dict   | Map of URI/Host to image, if this is present then `IMG_PATH` and `EXHAUST_PATH` will be ignored, see more on [MultiPath](/usage/multipath/) page                                                         |
+| `IMG_MAP`             | /                          | dict   | Map of URI/Host to image, if this is present then `IMG_PATH` will be ignored, see more on [MultiPath](/usage/multipath/) page                                                         |
 | `ALLOWED_TYPES`       | `WEBP_ALLOWED_TYPES`       | list   | List of allowed image types, if you'd like to allow all image types, just use `["*"]` here.                                                                                                                                                                                                  |
 | `CONVERT_TYPES`         | `WEBP_CONVERT_TYPES`         | string | The image types list that WebP Server will try to convert to, default is `["webp"]` which means it will only try to convert image to WebP, available options: `["webp","avif","jxl"]`. |
 | `STRIP_METADATA` | `WEBP_STRIP_METADATA` | bool | Whether to Strip EXIF metadata from images. |
@@ -73,6 +87,7 @@ Description of each field:
 | `CONCURRENCY`         | `WEBP_CONCURRENCY`         | number | Maximum number of concurrent connections                                                                                                                                                                                      |
 | `DISABLE_KEEPALIVE`   | `WEBP_DISABLE_KEEPALIVE`   | string | Disable keep-alive connections, the server will close incoming connections after sending the first response to the client                                                                                                     |
 | `CACHE_TTL`   | `WEBP_CACHE_TTL`   | number | Cache TTL(minutes) for Remote Backends(Proxy Mode), we use `HEAD` request to get remote image info, so your backend needs to support `HEAD` request, after first successfully `HEAD` request, it will be cached for `CACHE_TTL` minutes, during that period, we will not send `HEAD` request again and use local cache for rendering. Setting this value to 0 means cache forever.          |
+| `MAX_CACHE_SIZE`   | `WEBP_MAX_CACHE_SIZE`   | number | With unit of MiB, the default value is 0, which not clean local cached files, if this value is set, for example 50, then a background task will run alongside with WebP Server Go once per minute to make sure the local cached directories(`./metadata`, `./exhaust` and `./remote-raw`(if using remote backend)) will be below 50MiB, seperately.          |
 
 ## Configuration example
 
