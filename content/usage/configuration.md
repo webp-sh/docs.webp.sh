@@ -54,7 +54,7 @@ You can use environment variables to override the configuration in `config.json`
   "CONCURRENCY": 262144,
   "DISABLE_KEEPALIVE": false,
   "CACHE_TTL": 259200,
-  "MAX_CACHE_SIZE": 0,
+  "MAX_CACHE_SIZE": 0
 }
 ```
 
