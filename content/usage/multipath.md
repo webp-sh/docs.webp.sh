@@ -21,7 +21,7 @@ Example:
 
 ```json
 {
-  "HOST": "127.0.0.1",
+  "HOST": "0.0.0.0",
   "PORT": "3333",
   "QUALITY": "80",
   "IMG_PATH": "./pics",
@@ -34,11 +34,10 @@ Example:
   "ALLOWED_TYPES": ["jpg","png","jpeg","bmp","gif","svg","heic","nef"],
   "CONVERT_TYPES": ["webp"],
   "STRIP_METADATA": true,
+  "CACHE_TTL": 259200,
   "ENABLE_EXTRA_PARAMS": false
 }
 ```
-
-> Remember to change `"HOST": "127.0.0.1",` to `"HOST": "0.0.0.0",` if you'd like to use config inside Docker.
 
 For example, you have some images under `./pics`, `./pics2` and `./pics3`, as below:
 
@@ -55,6 +54,28 @@ Then you can access them via:
 * `http://www.example.com/favicon.png`
 
 For the last example to work you need to pass the `Host` header as part of the request. If you use `curl` you can test it with the command `curl -H 'Host: www.example.com' http://localhost:3333/favicon.png`
+
+## Note when using a remote backend
+
+If you're using a remote backend, like `"http://www.example.com": "https://docs.webp.sh"` in the example above, you need to make sure the remote backend is reachable by the local instance and will satisfy the following requirements:
+
+### Headers
+
+We use `Etag` header from backend to fetch and refresh/rebuild cache, so it's a need that your backend's response will contain a `Etag` header.
+
+We use `HEAD` request to get remote image info(to see if image still exist and whether it has changed), so your backend needs to support `HEAD` request, after first successfully `HEAD` request, it will be cached for `CACHE_TTL` **minutes**, during that period, we will not send `HEAD` request again and use local cache for rendering.
+
+Supported(tested) backends:
+
+* Aliyun OSS
+	* `ETag`
+* Tecent Cloud COS
+	* `ETag`
+* AWS S3
+	* `etag`
+* Nginx
+	* You need to enable etag output by adding `etag on;` in your server block
+	* `ETag`
 
 ## Note on `IMG_MAP`
 

@@ -20,3 +20,4 @@ weight: 18
 * [为网站添加图片 WebP 自动转换功能 - 知乎](https://zhuanlan.zhihu.com/p/112663522)
 * [用「WebP Server Go」优化你的图片 - 初之音](https://www.himiku.com/archives/webp-server-go.html)
 * [使用webp-server-go来无痛高效的优化网站图片 从jpg和png自动转成webp 并删除exif信息 - Q58](https://q58.org/questions/D1h3)
+* [ 能将图片转为WebP格式的WebP Server Go ](https://laosu.tech/2024/05/04/%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E4%B8%BAWebP%E6%A0%BC%E5%BC%8F%E7%9A%84WebP%20Server%20Go/)

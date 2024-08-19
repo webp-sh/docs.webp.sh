@@ -14,3 +14,4 @@ weight: 16
 | URL mapping               | ✔   |      | ✔    |        |
 | Compression rate display  | ✔   |      |      |        |
 | AVIF Support              | ✔   |      |      |        |
+| JXL Support              | ✔   |      |      |        |
