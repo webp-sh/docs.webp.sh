@@ -1,3 +1,10 @@
+---
+title: Healthz
+type: docs
+bookToc: false
+weight: 20
+---
+
 # Healthz
 
 There is a `/healthz` endpoint that can be used to check if the server is up and running. You can use this endpoint for liveness probe.
@@ -13,14 +20,14 @@ curl  localhost:3333/healthz -v
 > Host: localhost:3333
 > User-Agent: curl/8.0.1
 > Accept: */*
-> 
+>
 < HTTP/1.1 200 OK
 < Server: WebP Server Go
 < Date: Fri, 15 Dec 2023 03:16:08 GMT
 < Content-Type: text/plain; charset=utf-8
 < Content-Length: 34
 < Etag: W/"34-1945155614"
-< 
+<
 * Connection #0 to host localhost left intact
-WebP Server Go up and running!🥳%              
+WebP Server Go up and running!🥳%
 ```
