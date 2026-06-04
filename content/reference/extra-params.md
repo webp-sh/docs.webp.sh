@@ -1,3 +1,10 @@
+---
+title: Extra Parameters
+type: docs
+bookToc: false
+weight: 20
+---
+
 # Extra Parameters
 
 You can turn it on by setting `"ENABLE_EXTRA_PARAMS": true` in `config.json`.
@@ -48,7 +55,7 @@ If you set both `width` and `height`, your image will be cropped using attention
 
 > attention crop: look for features likely to draw human attention.
 
-You can use `EXTRA_PARAMS_CROP_INTERESTING` config to change crop interesting, configuration example at [Configuration](/usage/configuration/) page.
+You can use `EXTRA_PARAMS_CROP_INTERESTING` config to change crop interesting, configuration example at [Configuration](/configuration/configuration/) page.
 
 More examples can be found on our blog post: [How does different VipsInteresting values in libvips determine the cropping position of an image?](https://blog.webp.se/vips-crop-en/).
 

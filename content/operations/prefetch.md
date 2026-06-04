@@ -1,3 +1,10 @@
+---
+title: Prefetch
+type: docs
+bookToc: false
+weight: 21
+---
+
 # Prefetch
 
 Prefetch is useful if you'd like to have all your images converted in advance, especially suitable for large amount of images with high traffic volume, using prefetch will convert your images and cache the converted images, hence future requests will not consume computing power.
@@ -12,7 +19,7 @@ Start WebP Server with prefetch enabled will convert all your images to WebP on 
 ```sh
 ./webp-server -prefetch
 ```
-If you want to control threads to use while prefetching, add `-jobs=4`. 
+If you want to control threads to use while prefetching, add `-jobs=4`.
 By default, it will utilize all your CPU cores.
 ```sh
 # use 4 cores

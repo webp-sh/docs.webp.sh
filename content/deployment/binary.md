@@ -1,14 +1,14 @@
 ---
-title: Use with Binary(Advanced)
+title: Use with Binary (Advanced)
 type: docs
 bookToc: false
 weight: 25
 ---
 
-# Usage with Binary(Advanced)
+# Usage with Binary (Advanced)
 
 {{< hint "info" >}}
-Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](./DOCKER.html).
+Note: There is a potential memory leak problem with this server and remains unsolved, we recommend using Docker to mitigate this problem, refer to [Docker](/deployment/docker/).
 Related discussion: https://github.com/webp-sh/webp_server_go/issues/75
 {{< /hint >}}
 
@@ -26,18 +26,18 @@ Install `libvips` on your machine, more info [here](https://github.com/davidbytt
 {{< /tabs >}}
 
 
-> If you don't like to hassle around with your system, so do us, why not have a try using Docker? >> [Docker | WebP Server Documentation](https://docs.webp.sh/usage/docker/)
+> If you don't like to hassle around with your system, so do us, why not have a try using Docker? >> [Docker | WebP Server Documentation](https://docs.webp.sh/deployment/docker/)
 
 ## Create config file
 
-Please refer to [Configuration](CONFIGURATION.md) page.
+Please refer to [Configuration](/configuration/configuration/) page.
 
 ## Run
 
 ```sh
 ./webp-server --config=/path/to/config.json
 ```
-To keep this program running, refer to [Supervisor](SUPERVISOR.md) section.
+To keep this program running, refer to process managers such as `systemd` or `supervisord`.
 
 ## Nginx Example
 
@@ -55,4 +55,4 @@ location ~* \.(?:jpg|jpeg|gif|png|svg|heic|bmp|nef|webp)$ {
 
 If you use Caddy, you may refer to [优雅的让 Halo 支持 webp 图片输出](https://halo.run/archives/halo-and-webp).
 
-If there is a CDN in front of your website, please refer to [Use with CDN](CDN.md)
+If there is a CDN in front of your website, please refer to [Use with CDN](/deployment/cdn/)

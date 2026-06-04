@@ -1,12 +1,11 @@
-
 ---
-title: Log verbosity
+title: Log Verbosity
 type: docs
 bookToc: false
-weight: 30
+weight: 22
 ---
 
-# Log verbosity
+# Log Verbosity
 
 You can control log level using `--verbosity` flag on startup, e,g: `./webp-server --verbosity 0`
 
